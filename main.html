@@ -52,8 +52,7 @@
       for(let i=0;i<images.length;i++) {
         let rect = images[i].getBoundingClientRect();
         if(
-          rect.top>=0 &&
-          rect.bottom<=window.innerHeight) {
+          rect.top>=0) {
             images[i].classList.add('active');
           }
       }

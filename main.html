@@ -48,10 +48,18 @@
     
     function checkSlide() {
       for(let i=0;i<images.length;i++) {
-        let rect = images[i].getBoundingClientRect();
-        if( (rect.top>=0) && (((rect.top+(rect.height/2))<=window.innerHeight) || ((rect.bottom)<=window.innerHeight)) ) {
-            images[i].classList.add('active');
-          }
+        // let rect = images[i].getBoundingClientRect();
+        // if( (rect.top>=0) && (((rect.top+(rect.height/2))<=window.innerHeight) || ((rect.top+rect.height)<=window.innerHeight)) ) {
+        //     images[i].classList.add('active');
+        //   }
+
+        let slide = (window.scrollY + window.innerHeight)- images[i].height / 2;
+
+        let bottom = images[i].offsetTop + images[i].height;
+
+        if((slide > images[i].offsetTop) && (window.scrollY < bottom)) {
+          images[i].classList.add('active');
+        }
       }
     } 
     function debounce(func, wait = 20, immediate = true) {
